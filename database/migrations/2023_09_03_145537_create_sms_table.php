@@ -5,13 +5,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('sms', static function (Blueprint $table) {
-            $table->ulid();
+            $table->ulid('id');
             $table->string('sender_number');
             $table->string('receiver_number');
             $table->string('vonage_message_id');
@@ -19,8 +20,8 @@ return new class extends Migration {
             $table->string('type');
             $table->string('api_key');
             $table->string('message_timestamp');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
